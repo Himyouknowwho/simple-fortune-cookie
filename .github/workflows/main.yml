@@ -35,4 +35,4 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           push: true
-          tags: himyouknowwho/simple-fortune-cookie:latest
+#          tags: himyouknowwho/simple-fortune-cookie:latest
