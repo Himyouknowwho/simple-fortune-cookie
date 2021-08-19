@@ -28,7 +28,15 @@ jobs:
         with:
           username: ${{ env.docker_username }}
           password: ${{ env.docker_password }}
-      - name: Push Docker Frontend
+
+      - name: Build frontend image
+        run: export GIT_COMMIT="GA-$GITHUB_SHA" && bash ci/sfc-docker-build-frontend.sh
+
+      - name: Push docker frontend
         run: chmod +x ci/push-docker-frontend.sh && export GIT_COMMIT="GA-$GITHUB_SHA" && ci/push-docker-frontend.sh
-      - name: Push Docker backend
+
+      - name: Build backend image
+        run: export GIT_COMMIT="GA-$GITHUB_SHA" && bash ci/sfc-docker-build-backend.sh
+
+      - name: Push docker backend
         run: chmod +x ci/push-docker-backend.sh && export GIT_COMMIT="GA-$GITHUB_SHA" && ci/push-docker-backend.sh
