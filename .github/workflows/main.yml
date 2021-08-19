@@ -7,7 +7,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, test, dev ] #Augment your script such that you can deploy multiple versions ( eg. development, staging, production ), depending on the PR branch name
 
 jobs:
   Test:
