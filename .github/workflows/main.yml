@@ -11,14 +11,14 @@ on:
 
 jobs:
   Test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Clone-down
         uses: actions/checkout@v2
       - name: Run go test
         run: cd frontend && go test
   Build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Clone-down
         uses: actions/checkout@v2
@@ -32,7 +32,7 @@ jobs:
           name: frontendAndBackend
           path: .
   Push-latest:
-     runs-on: ubuntu-latest
+     runs-on: self-hosted
      needs: [Test, Build]
      steps:
       - name: Download repo
@@ -45,8 +45,8 @@ jobs:
         with:
           username: ${{ env.docker_username }}
           password: ${{ env.docker_password }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
+      - name: push
+        uses: docker/push-action@v2
         with:
           push: true
-          tags: my-org/my-image:latest
+          tags: himyouknowwho/simple-fortune-cookie:latest
