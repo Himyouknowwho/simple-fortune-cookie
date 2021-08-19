@@ -11,14 +11,14 @@ on:
 
 jobs:
   Test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Clone-down
         uses: actions/checkout@v2
       - name: Run go test
         run: cd frontend && go test
   Build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [Test]
     steps:
       - name: Clone-down
