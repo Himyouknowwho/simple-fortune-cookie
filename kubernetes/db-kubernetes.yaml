@@ -17,7 +17,7 @@ spec:
       labels:
         app: db
     spec:
-      containers:
+      containers: 
       - image: redis
         name: db
         resources: {}

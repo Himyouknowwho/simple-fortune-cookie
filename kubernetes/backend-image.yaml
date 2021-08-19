@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: backend
-  name: backend
+  name: backend 
 spec:
   replicas: 1
   selector:

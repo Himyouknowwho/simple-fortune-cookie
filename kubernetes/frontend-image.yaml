@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - image: himyouknowwho/simple-fortune-cookie-frontend:latest
-        name: frontend
+        name: frontend 
         resources: {}
 status: {}
