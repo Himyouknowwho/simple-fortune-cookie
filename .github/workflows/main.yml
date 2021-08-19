@@ -23,17 +23,12 @@ jobs:
     steps:
       - name: Clone-down
         uses: actions/checkout@v2
-      - name: Build frontend
-        run:  cd frontend && go build
-      - name: Build backend
-        run: cd backend && go build
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           username: ${{ env.docker_username }}
           password: ${{ env.docker_password }}
-      - name: push
-        uses: docker/build-push-action@v1
-        with:
-          push: true
-#          tags: himyouknowwho/simple-fortune-cookie:latest
+      - name: Push Docker Frontend
+        run: chmod +x ci/push-docker-frontend.sh && export GIT_COMMIT="GA-$GITHUB_SHA" && ci/push-docker-frontend.sh
+      - name: Push Docker backend
+        run: chmod +x ci/push-docker-backend.sh && export GIT_COMMIT="GA-$GITHUB_SHA" && ci/push-docker-backend.sh
