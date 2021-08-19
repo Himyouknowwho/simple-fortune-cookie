@@ -1,2 +1,3 @@
-FROM ubuntu:latest
-COPY .
+FROM scratch
+COPY backend /backend
+CMD ["./backend"]

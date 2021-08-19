@@ -1,2 +1,3 @@
-FROM ubuntu:latest
-COPY .
+FROM scratch
+COPY frontend /frontend
+CMD ["./frontend"]
